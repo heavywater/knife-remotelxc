@@ -7,8 +7,6 @@ module RemoteLXC
 
     deps do
       Chef::Knife::Bootstrap.load_deps
-      Chef::Knife::Ssh.load_deps
-      require 'stringio'
     end
 
     banner 'knife remotelxc create NODE_NAME'
@@ -124,7 +122,6 @@ module RemoteLXC
     end
 
     def create_new_container
-      io = StringIO.new
       knife_ssh(lxc_base, "sudo /usr/local/bin/knife-lxc create #{lxc_name}").stdout.to_s.split(':').last.to_s.strip
     end
 
@@ -135,14 +132,5 @@ module RemoteLXC
       bootstrap.run
     end
 
-    def knife_ssh(addr, command)
-      cmd = "ssh -o StrictHostKeyChecking=no #{"{config[:lxc_ssh_user]}@" if config[:lxc_ssh_user]}#{addr} #{command}"
-      so = Mixlib::ShellOut.new(cmd,
-        :logger => Chef::Log.logger,
-        :live_stream => $stdout
-      ).run_command
-      so.error!
-      so
-    end
   end
 end
