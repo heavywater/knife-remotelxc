@@ -1,4 +1,4 @@
-include 'knife-remotelxc/helpers'
+require 'knife-remotelxc/helpers'
 
 module RemoteLXC
   class RemotelxcInfo < Chef::Knife::Ssh

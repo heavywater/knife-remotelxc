@@ -1,4 +1,4 @@
-include 'knife-remotelxc/helpers'
+require 'knife-remotelxc/helpers'
 
 module RemoteLXC
   class RemotelxcList < Chef::Knife::Ssh
@@ -18,7 +18,7 @@ module RemoteLXC
       :long => '--lxc-ssh-user USERNAME'
    
     def run
-      knife_ssh(config[:lxc_node], "knife_lxc list")
+      knife_ssh(config[:lxc_node], "sudo knife_lxc list")
     end
 
   end
