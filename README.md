@@ -1,11 +1,12 @@
-== Knife Remotelxc
+# Knife Remotelxc
+===============
 
-= DESCRIPTION
+## DESCRIPTION
 
 knife-remotelxc is a chef plugin which allows you to create, delete, list and get info on lxc
 containers on remote machines using knife.
 
-= INSTALLATION
+## INSTALLATION
 
 Install using the ruby gem
 ```
@@ -19,17 +20,17 @@ and then
 bundle install
 ```
 
-= COMMANDS
+## COMMANDS
 
 * knife remotelxc create NODE_NAME
 * knife remotelxc delete NODE_NAME
 * knife remotelxc info NODE_NAME
 * knife remotelxc list
 
-command details:
+### command details:
 knife remotelxc create --help
 
-example:
+### example:
 ```
 knife remotelxc create -l lxc.enabled.host.com -E development -r "role[base]" -x ubuntu -i ~/.ssh/identification --sudo -y
 ```
